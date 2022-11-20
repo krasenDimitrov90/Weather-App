@@ -1,0 +1,36 @@
+
+.header {
+
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(0,0,0,0.5);
+    padding: 10px;
+
+
+    .header-left,
+    .header-right {
+        padding: 10px;
+        background-color: white;
+        margin: 3px;
+    }
+
+    .header-left a {
+        text-decoration: none;
+    }
+
+    .header-right input {
+        font-size: 16px;
+        border: none;
+        font-family: 'Montserrat', sans-serif;
+        outline: 0;
+    }
+
+    .header-right i:hover {
+        cursor: pointer;
+    }
+
+
+
+}
+
+
