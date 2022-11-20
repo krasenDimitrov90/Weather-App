@@ -1,0 +1,18 @@
+
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    color: white;
+
+    .weather-environment,
+    .last-update {
+        margin-bottom: 0.5rem;
+    }
+
+    .daily {
+        align-self: flex-start;
+    }
+}

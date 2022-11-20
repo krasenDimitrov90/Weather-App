@@ -1,0 +1,11 @@
+.daily {
+
+    width: 100vw;
+    padding: 2rem;
+
+    .daily-days {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+}

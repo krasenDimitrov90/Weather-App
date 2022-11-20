@@ -1,0 +1,23 @@
+.daily-day {
+
+    padding: 2rem;
+
+    .daily-days-card p,
+    .daily-days-card img {
+        margin: 0.3rem 0;
+    }
+
+    .degrees-from-to {
+        display: flex;
+
+        .degrees-from {
+            margin-right: 0.7rem;
+            font-size: 24px;
+        }
+
+        .degrees-to {
+            display: flex;
+            align-items: flex-end;
+        }
+    }
+}

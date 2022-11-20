@@ -1,0 +1,34 @@
+.temperature {
+    display: flex;
+    align-items: center;
+
+    >* {
+        margin: 0 0.5rem;
+    }
+
+    .temperature-degrees {
+        font-size: 5rem;
+        display: flex;
+    }
+
+    .temperature-degrees p:first-of-type {
+        line-height: 58px;
+    }
+
+    .temperature-degrees p:last-of-type {
+        font-size: 2rem;
+        line-height: 24px;
+    }
+
+
+    .temperature-units {
+        font-size: 1.5rem;
+        align-self: flex-start;
+        line-height: 20px;
+    }
+
+    .temperature-units > * {
+        margin-bottom: 0.5rem;
+    }
+
+}

@@ -1,0 +1,13 @@
+.weather-conditions {
+
+
+    .weather-conditions-top,
+    .weather-conditions-bottom {
+        display: flex;
+    }
+
+    .weather-conditions-top > *,
+    .weather-conditions-bottom > * {
+        margin: 0.2rem 1rem;
+    }
+}
