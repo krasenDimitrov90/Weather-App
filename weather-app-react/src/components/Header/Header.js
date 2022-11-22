@@ -33,7 +33,7 @@ const Header = () => {
             </section>
             <form onSubmit={handleClick} className='header-right'>
                 <input type="text" name='city' placeholder='Write city here' />
-                <button type='submit'><i class="fa-sharp fa-solid fa-magnifying-glass" ></i></button>
+                <button type='submit'><i className="fa-sharp fa-solid fa-magnifying-glass" ></i></button>
             </form>
         </header>
     )

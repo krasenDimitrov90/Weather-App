@@ -1,5 +1,6 @@
 import DailyForcastCard from "./DailyForecastCard";
 import './DailyForcast.style.scss';
+import { obj } from "../../../servicies/test";
 
 const DailyForcast = () => (
     <section className='daily'>
@@ -7,11 +8,7 @@ const DailyForcast = () => (
                 <h2>Daily</h2>
             </article>
             <section className='daily-days'>
-                <DailyForcastCard />
-                <DailyForcastCard />
-                <DailyForcastCard />
-                <DailyForcastCard />
-                <DailyForcastCard />
+                {obj.DailyForecasts.map(day => <DailyForcastCard key={day.Date} day={day} />)}
             </section>
 
         </section>
