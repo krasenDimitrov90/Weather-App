@@ -1,19 +1,19 @@
 import './Header.style.scss';
-import { useState, useEfect } from 'react';
+import { useState, useEfect, useContext } from 'react';
+import { Navigate } from 'react-router-dom';
+import { WeatherContext } from '../../contexts/WeatherContext';
 
-import { getTown, getOneDayWeatherInfo, getFiveDayWeatherInfo } from '../../servicies/requests';
+import { getTown, getCurrentConditionWeatherInfo, getFiveDayWeatherInfo } from '../../servicies/requests';
 
 
 
 const Header = () => {
 
-    const [city, setCity] = useState('');
-    const [cityKey, setCityKey] = useState('');
-    const [countryId, setCountryId] = useState('');
-    const [weather, setWeather] = useState('');
+    const {setTown, setCurrentWeather, setFiveDayWeather} = useContext(WeatherContext);
 
     const handleClick = async (e) => {
         e.preventDefault();
+        setFiveDayWeather({});
         const { city } = Object.fromEntries(new FormData(e.target))
         const data = await getTown(city)
         const townData = data[0]
@@ -21,9 +21,12 @@ const Header = () => {
         const townKey = townData.Key;
         const id = townData.Country.ID;
 
-        const cityWeather = await getFiveDayWeatherInfo(townKey);
+        const currentConditionWeatherInfo = await getCurrentConditionWeatherInfo(townKey);
+        const fiveDayWeatherInfo = await getFiveDayWeatherInfo(townKey);
 
-        console.log( 'in handleClick', cityWeather);
+        setTown(city);
+        setCurrentWeather(currentConditionWeatherInfo[0]);
+        setFiveDayWeather(fiveDayWeatherInfo);
     }
 
     return (

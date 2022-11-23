@@ -1,6 +1,7 @@
 .daily-day {
 
     padding: 2rem;
+    max-width: 20%;
 
     .daily-days-card p,
     .daily-days-card img {
@@ -20,4 +21,9 @@
             align-items: flex-end;
         }
     }
+}
+
+.daily-day:hover {
+    background-color: rgba(0,0,0,0.4);
+    cursor: pointer;
 }
