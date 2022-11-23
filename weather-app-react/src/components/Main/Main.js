@@ -3,15 +3,16 @@ import { WeatherContext } from '../../contexts/WeatherContext';
 
 import WeatherConditions from './Conditions/WeatherConditions';
 import DailyForcast from './DailyForcast/DailyForecast';
-import './Main.style.scss'
+import './Main.style.scss';
+import './loader.style.scss';
 
 import Temperature from "./Temperature/Temperature";
 
 const Main = () => {
 
-    const { town, fiveDayWeather, currentWeather } = useContext(WeatherContext);
+    const {time, town, fiveDayWeather, currentWeather } = useContext(WeatherContext);
 
-    const loadingTemplate =  <div class="water"></div>;
+    const loadingTemplate =  <span class="loader"></span>;
 
 
     return (
@@ -28,10 +29,10 @@ const Main = () => {
                     <h2>{currentWeather.WeatherText}</h2>
                 </section>
                 <section className='last-update'>
-                    <p>Updated as of 01:27 AM</p>
+                    <p>Updated as of {time}</p>
                 </section>
 
-                <WeatherConditions />
+                {/* <WeatherConditions /> */}
 
                 <DailyForcast />
 

@@ -6,7 +6,7 @@ const DailyForcastCard = ({ day }) => {
         .slice(0,10)
         .split('-')
         .map(Number)
-        .map((a, i) => i === 1 ? a -= 1 : a)
+        // .map((a, i) => i === 1 ? a -= 1 : a)
         .join(','); 
 
     const [dayOfWeek, month, date, ...rest] = new Date(dayDate)

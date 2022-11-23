@@ -2,7 +2,6 @@ import { useContext } from 'react';
 import { WeatherContext } from '../../../contexts/WeatherContext';
 
 import './Temperature.style.scss'
-import { obj } from '../../../servicies/test';
 
 const Temperature = () => {
 

@@ -3,7 +3,6 @@ import { WeatherContext } from "../../../contexts/WeatherContext";
 
 import DailyForcastCard from "./DailyForecastCard";
 import './DailyForcast.style.scss';
-import { obj } from "../../../servicies/test";
 
 const DailyForcast = () => {
 

@@ -9,7 +9,7 @@ import { getTown, getCurrentConditionWeatherInfo, getFiveDayWeatherInfo } from '
 
 const Header = () => {
 
-    const {setTown, setCurrentWeather, setFiveDayWeather} = useContext(WeatherContext);
+    const {setTime, setTown, setCurrentWeather, setFiveDayWeather} = useContext(WeatherContext);
 
     const handleClick = async (e) => {
         e.preventDefault();
@@ -24,9 +24,17 @@ const Header = () => {
         const currentConditionWeatherInfo = await getCurrentConditionWeatherInfo(townKey);
         const fiveDayWeatherInfo = await getFiveDayWeatherInfo(townKey);
 
+        const date = new Date();
+        const currentTime = date.getHours() + ':' + date.getMinutes();
+
+        setTime(currentTime);
         setTown(city);
         setCurrentWeather(currentConditionWeatherInfo[0]);
         setFiveDayWeather(fiveDayWeatherInfo);
+    }
+
+    const handleChange = (e) => {
+        console.log(e.target.value);
     }
 
     return (
@@ -35,7 +43,7 @@ const Header = () => {
                 <a href="#">Home</a>
             </section>
             <form onSubmit={handleClick} className='header-right'>
-                <input type="text" name='city' placeholder='Write city here' />
+                <input type="text" name='city' onChange={handleChange} placeholder='Write city here' />
                 <button type='submit'><i className="fa-sharp fa-solid fa-magnifying-glass" ></i></button>
             </form>
         </header>
