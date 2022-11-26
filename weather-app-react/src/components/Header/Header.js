@@ -25,7 +25,7 @@ const Header = () => {
         const fiveDayWeatherInfo = await getFiveDayWeatherInfo(townKey);
 
         const date = new Date();
-        const currentTime = date.getHours() + ':' + date.getMinutes();
+        const currentTime = date.getHours() + ':' + date.getMinutes().toString().padStart(2, '0');
 
         setTime(currentTime);
         setTown(city);
