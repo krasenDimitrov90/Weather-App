@@ -1,7 +1,6 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { WeatherContext } from '../../contexts/WeatherContext';
 
-import WeatherConditions from './Conditions/WeatherConditions';
 import DailyForcast from './DailyForcast/DailyForecast';
 import './Main.style.scss';
 import './loader.style.scss';
@@ -10,17 +9,15 @@ import Temperature from "./Temperature/Temperature";
 
 const Main = () => {
 
-    const {time, town, fiveDayWeather, currentWeather } = useContext(WeatherContext);
+    const {appState} = useContext(WeatherContext);
 
-    const loadingTemplate =  <span class="loader"></span>;
+    const { time, currentFoundCity, currentWeather } = appState
 
 
     return (
-        Object.keys(fiveDayWeather).length === 0
-            ? loadingTemplate
-            : <main className="main">
+        <main className="main">
                 <section className="main-city">
-                    <h2>{town.slice(0, 1).toUpperCase() + town.slice(1)}</h2>
+                    <h2 style={{ textTransform: 'capitalize' }}>{currentFoundCity}</h2>
                 </section>
 
                 <Temperature />

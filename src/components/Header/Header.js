@@ -1,40 +1,13 @@
 import './Header.style.scss';
-import { useState, useEfect, useContext } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useContext } from 'react';
 import { WeatherContext } from '../../contexts/WeatherContext';
-
-import { getTown, getCurrentConditionWeatherInfo, getFiveDayWeatherInfo } from '../../servicies/requests';
-
-
 
 const Header = () => {
 
-    const {setTime, setTown, setCurrentWeather, setFiveDayWeather} = useContext(WeatherContext);
+    const {updateState, handleFetchWeather} = useContext(WeatherContext);
 
-    const handleClick = async (e) => {
-        e.preventDefault();
-        setFiveDayWeather({});
-        const { city } = Object.fromEntries(new FormData(e.target))
-        const data = await getTown(city)
-        const townData = data[0]
-
-        const townKey = townData.Key;
-        const id = townData.Country.ID;
-
-        const currentConditionWeatherInfo = await getCurrentConditionWeatherInfo(townKey);
-        const fiveDayWeatherInfo = await getFiveDayWeatherInfo(townKey);
-
-        const date = new Date();
-        const currentTime = date.getHours() + ':' + date.getMinutes().toString().padStart(2, '0');
-
-        setTime(currentTime);
-        setTown(city);
-        setCurrentWeather(currentConditionWeatherInfo[0]);
-        setFiveDayWeather(fiveDayWeatherInfo);
-    }
-
-    const handleChange = (e) => {
-        console.log(e.target.value);
+    const handleChangeCity = (e) => {
+        updateState({town: e.target.value})
     }
 
     return (
@@ -42,8 +15,8 @@ const Header = () => {
             <section className='header-left'>
                 <a href="#">Home</a>
             </section>
-            <form onSubmit={handleClick} className='header-right'>
-                <input type="text" name='city' onChange={handleChange} placeholder='Write city here' />
+            <form onSubmit={handleFetchWeather} className='header-right'>
+                <input type="text" name='city' onChange={handleChangeCity} placeholder='Write city here' />
                 <button type='submit'><i className="fa-sharp fa-solid fa-magnifying-glass" ></i></button>
             </form>
         </header>

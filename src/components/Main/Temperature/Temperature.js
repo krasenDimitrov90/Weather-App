@@ -5,11 +5,15 @@ import './Temperature.style.scss'
 
 const Temperature = () => {
 
-    const { currentWeather } = useContext(WeatherContext);
+    const { appState } = useContext(WeatherContext);
+
+    const {currentWeather} = appState
+
+    const iconID = currentWeather.WeatherIcon < 9 ? `0${currentWeather.WeatherIcon}` : currentWeather.WeatherIcon
 
     return (
         <section className="temperature">
-            <img src={require(`..//DailyForcast/climateIcons/${currentWeather.WeatherIcon}.png`)} alt="cloud" />
+            <img src={`https://developer.accuweather.com/sites/default/files/${iconID}-s.png`} alt="cloud" />
             <article className="temperature-degrees">
                 <p >{Math.ceil(currentWeather.Temperature.Metric.Value)}</p>
                 <p >{'\u00b0'}</p>
