@@ -7,18 +7,19 @@ const DailyForcastCard = ({ day }) => {
         .split('-')
         .map(Number)
         // .map((a, i) => i === 1 ? a -= 1 : a)
-        .join(','); 
+        .join(',');
 
-    const [dayOfWeek, month, date, ...rest] = new Date(dayDate)
+    const [dayOfWeek, _month, date] = new Date(dayDate)
         .toString()
         .split(' ');
 
+    const iconID = day.Day.Icon < 9 ? `0${day.Day.Icon}` : day.Day.Icon
 
     return (
         <article className='daily-day'>
             <article className='daily-days-card'>
                 <p className='daily-days-card-date'>{dayOfWeek} {date}</p>
-                <img className='daily-days-card-img' src={require(`.//climateIcons/${day.Day.Icon}.png`)} alt="cloud" />
+                <img className='daily-days-card-img' src={`https://developer.accuweather.com/sites/default/files/${iconID}-s.png`} alt="cloud" />
                 <article className='degrees-from-to'>
                     <p className='degrees-from'>{convertToCelsius(day.Temperature.Maximum.Value)}{'\u00b0'}</p>
                     <article className='degrees-to'>

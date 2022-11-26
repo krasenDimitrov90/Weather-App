@@ -6,7 +6,9 @@ import './DailyForcast.style.scss';
 
 const DailyForcast = () => {
 
-    const {fiveDayWeather} = useContext(WeatherContext);
+    const {appState} = useContext(WeatherContext);
+
+    const { fiveDayWeather } = appState
 
     return (
         <section className='daily'>
@@ -14,8 +16,8 @@ const DailyForcast = () => {
                 <h2>Daily</h2>
             </article>
             <section className='daily-days'>
-             {fiveDayWeather.DailyForecasts.map(day => <DailyForcastCard key={day.Date} day={day} />)}
-                
+             {fiveDayWeather?.DailyForecasts.map(day => <DailyForcastCard key={day.Date} day={day} />)}
+
             </section>
 
         </section>
